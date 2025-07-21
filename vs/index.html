@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #4e8cff 0%, #6fd6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 40px 36px 32px 36px;
+            min-width: 340px;
+            text-align: center;
+            animation: fadeInUp 0.8s;
+        }
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4e8cff;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .login-input {
+            width: 90%;
+            padding: 12px 14px;
+            margin-bottom: 22px;
+            border: 1.5px solid #e0e7ef;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .login-input:focus {
+            border: 1.5px solid #4e8cff;
+            box-shadow: 0 2px 8px rgba(78,140,255,0.10);
+        }
+        .login-btn, .result-btn {
+            width: 100%;
+            padding: 12px 0;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #4e8cff 0%, #6fd6ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(78,140,255,0.15);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .login-btn:hover, .result-btn:hover {
+            background: linear-gradient(90deg, #6fd6ff 0%, #4e8cff 100%);
+            transform: scale(1.04);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .admin-icon {
+            font-size: 3rem;
+            color: #4e8cff;
+            margin-bottom: 18px;
+            animation: bounce 1.2s infinite alternate;
+        }
+        @keyframes bounce {
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="admin-icon">🔒</div>
+        <div class="login-title">Admin Login</div>
+        <input type="password" id="adminPass" class="login-input" placeholder="Enter Admin Password">
+        <button id="loginBtn" class="login-btn">Login</button>
+    </div>
+    <script>
+        document.getElementById('loginBtn').onclick = function() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === "admin123"){ // Change password as needed
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Incorrect password!");
+            }
+        };
+        // Allow Enter key to submit
+        document.getElementById('adminPass').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') document.getElementById('loginBtn').click();
+        });
+    </script>
+</body>
+</html>
