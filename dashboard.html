@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #4e8cff 0%, #6fd6ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dashboard-card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 48px 40px 40px 40px;
+            min-width: 340px;
+            text-align: center;
+            animation: fadeInUp 1s;
+        }
+        .dashboard-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4e8cff;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            animation: fadeInDown 1s;
+        }
+        .dashboard-btn {
+            width: 100%;
+            padding: 14px 0;
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #4e8cff 0%, #6fd6ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(78,140,255,0.15);
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .dashboard-btn:hover {
+            background: linear-gradient(90deg, #6fd6ff 0%, #4e8cff 100%);
+            transform: scale(1.04);
+        }
+        .dashboard-icon {
+            font-size: 1.5rem;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-card">
+        <div class="dashboard-title">Admin Dashboard</div>
+        <button class="dashboard-btn" id="conductElectionBtn">
+            <span class="dashboard-icon">🗳️</span> Conduct Election
+        </button>
+        <button class="dashboard-btn" id="resetVotesBtn" style="background: linear-gradient(90deg, #ff4e4e 0%, #ffb36f 100%);">
+            <span class="dashboard-icon">♻️</span> Reset Votes
+        </button>
+        <button class="dashboard-btn" id="seeResultBtn" style="background: linear-gradient(90deg, #4e8cff 0%, #6fd6ff 100%);">
+            <span class="dashboard-icon">📊</span> See Result
+        </button>
+    </div>
+    <script>
+        document.getElementById('conductElectionBtn').onclick = function() {
+            window.location.href = "voting.html";
+        };
+        document.getElementById('resetVotesBtn').onclick = function() {
+            if(confirm("Are you sure you want to reset all votes to zero?")) {
+                localStorage.setItem('c1votes', 0);
+                localStorage.setItem('c2votes', 0);
+                localStorage.setItem('c3votes', 0);
+                alert("All votes have been reset to zero.");
+            }
+        };
+        document.getElementById('seeResultBtn').onclick = function() {
+            window.location.href = "result.html";
+        };
+    </script>
+</body>
+</html>

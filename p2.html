@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS By Shobhit</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #4e8cff 0%, #6fd6ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .Container1 {
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 48px 36px 36px 36px;
+            text-align: center;
+            animation: fadeInUp 1s;
+            max-width: 400px;
+            width: 90vw;
+            max-height: 80vh;
+        }
+        .icon-thank {
+            font-size: 4rem;
+            color: #4e8cff;
+            margin-bottom: 18px;
+            animation: popIn 1.2s;
+            display: inline-block;
+        }
+        .headings {
+            position: relative;
+            min-height: 120px;
+        }
+        .heading {
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            left: 0; right: 0;
+            width: 100%;
+            transition: opacity 0.7s, transform 0.7s;
+        }
+        .heading-1 {
+            font-size: 2rem;
+            color: #4e8cff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 1;
+            position: static;
+            animation: fadeInText 1s forwards;
+        }
+        .heading-2, .heading-3 {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .show-h2 {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition-delay: 0s;
+        }
+        .show-h5 {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition-delay: 0.2s;
+        }
+        .heading-2 {
+            font-size: 1.2rem;
+            color: #2d3a4b;
+            font-weight: 500;
+            margin: 16px 0 0 0;
+        }
+        .heading-3 {
+            font-size: 1.5rem;
+            color: #6fd6ff;
+            font-weight: 600;
+            margin: 24px 0 0 0;
+        }
+        .card1 {
+            margin-top: 32px;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, #4e8cff 0%, #6fd6ff 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(78,140,255,0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1.4s;
+        }
+        .card1-icon {
+            font-size: 2.5rem;
+            color: #fff;
+            animation: pulse 1.2s infinite alternate;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes pulse {
+            to {
+                color: #e0e7ef;
+                text-shadow: 0 0 12px #fff8;
+            }
+        }
+        .hide-h3 {
+            opacity: 0 !important;
+            transition: opacity 0.7s;
+        }
+    </style>
+</head>
+<body>
+    <div class="Container1">
+        <div class="icon-thank">🎉</div>
+        <div class="headings">
+            <h3 class="heading heading-1">Hold ON</h3>
+            <h5 class="heading heading-2" id="h5">Your vote is Precious</h5>
+            <h2 class="heading heading-3" id="h2">Thanks For Voting</h2>
+        </div>
+        <div class="card1">
+            <span class="card1-icon">✅</span>
+        </div>
+    </div>
+    <script>
+        // Show h2 and h5 after a delay, h3 remains visible
+        setTimeout(function() {
+            document.getElementById('h2').classList.add('show-h2');
+            document.getElementById('h5').classList.add('show-h5');
+            document.querySelector('.heading-1').classList.add('hide-h3'); // Hide h3
+        }, 1800);
+
+        setTimeout(function() {
+            window.location.href = "voting.html";
+        }, 6000);
+    </script>
+</body>
+</html>

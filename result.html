@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Results</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .results-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .result-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 32px 40px;
+            min-width: 240px;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(.4,2.3,.3,1), box-shadow 0.3s;
+            animation: fadeInUp 0.7s;
+        }
+        .result-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.10);
+        }
+        .result-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3a4b;
+            margin-bottom: 12px;
+        }
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #4e8cff;
+            margin-bottom: 6px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .back-btn {
+            display: block;
+            margin: 40px auto 0 auto;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, #4e8cff 0%, #6fd6ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(78,140,255,0.15);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: linear-gradient(90deg, #6fd6ff 0%, #4e8cff 100%);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center; margin-top:30px;">Voting Results</h1>
+    <div class="results-container">
+        <div class="result-card">
+            <div class="result-title">Candidate 1 Votes</div>
+            <div class="result-value" id="c1votes">0</div>
+        </div>
+        <div class="result-card">
+            <div class="result-title">Candidate 2 Votes</div>
+            <div class="result-value" id="c2votes">0</div>
+        </div>
+        <div class="result-card">
+            <div class="result-title">Candidate 3 Votes</div>
+            <div class="result-value" id="c3votes">0</div>
+        </div>
+        <div class="result-card">
+            <div class="result-title">Total Votes</div>
+            <div class="result-value" id="totalvotes">0</div>
+        </div>
+    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back to Admin Login</button>
+    <script>
+        let c1 = parseInt(localStorage.getItem('c1votes')) || 0;
+        let c2 = parseInt(localStorage.getItem('c2votes')) || 0;
+        let c3 = parseInt(localStorage.getItem('c3votes')) || 0;
+        document.getElementById('c1votes').textContent = c1;
+        document.getElementById('c2votes').textContent = c2;
+        document.getElementById('c3votes').textContent = c3;
+        document.getElementById('totalvotes').textContent = c1 + c2 + c3;
+    </script>
+</body>
+</html>
